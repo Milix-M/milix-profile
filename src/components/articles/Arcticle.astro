@@ -9,7 +9,7 @@ const { date, slug, title } = Astro.props;
 ---
 
 <div class="flex items-start gap-4">
-    <div class="text-gray-500 text-sm pt-1 whitespace-nowrap">{date}</div>
+    <div data-article-date class="text-gray-500 text-sm pt-1 whitespace-nowrap">{date}</div>
     <div class="flex-1">
         <a
             href={slug}
