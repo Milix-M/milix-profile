@@ -8,7 +8,7 @@ dayjs.extend(timezone);
 
 const ZENN_FEED_URL = 'https://zenn.dev/milix_m/feed?all=1';
 
-export interface Post {
+interface Post {
     title: string;
     date: string;
     slug: string;
