@@ -2,13 +2,53 @@
 import { getZennRssFeed } from "../../lib/zenn";
 import Article from "./Arcticle.astro";
 
-const posts = await getZennRssFeed();
+const posts = await getZennRssFeed().catch((error: unknown) => {
+    console.warn("Could not render the initial Zenn article list", error);
+    return [];
+});
 ---
 
-<div class="space-y-6">
+<div data-zenn-articles class="space-y-6">
     {
         posts.map((post) => (
             <Article date={post.date} slug={post.slug} title={post.title} />
         ))
     }
 </div>
+
+<template data-zenn-article-template>
+    <Article date="" slug="" title="" />
+</template>
+
+<script>
+    import type { Post } from "../../lib/zenn";
+
+    async function refreshArticles() {
+        const list = document.querySelector("[data-zenn-articles]");
+        const template = document.querySelector<HTMLTemplateElement>("[data-zenn-article-template]");
+        if (!list || !template) return;
+
+        const response = await fetch("/api/zenn/articles", { signal: AbortSignal.timeout(5_000) });
+        if (!response.ok) return;
+
+        const posts: Post[] = await response.json();
+        if (!Array.isArray(posts) || posts.length === 0) return;
+
+        const rows = document.createDocumentFragment();
+        for (const post of posts) {
+            const row = template.content.cloneNode(true) as DocumentFragment;
+            const date = row.querySelector("[data-article-date]");
+            const link = row.querySelector("a");
+            if (!date || !link) return;
+            date.textContent = post.date;
+            link.textContent = post.title;
+            link.href = post.slug;
+            rows.append(row);
+        }
+        list.replaceChildren(rows);
+    }
+
+    void refreshArticles().catch(() => {
+        // Keep the articles already rendered in the page.
+    });
+</script>
