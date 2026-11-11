@@ -1,6 +1,9 @@
-# Portfolio Site
+# milix-profile
 
 Astro で構築したポートフォリオサイトです。プロフィール、経歴、技術スタック、記事一覧などを表示できる構成になっています。
+
+- 公開サイト: [profile.milix-m.com](https://profile.milix-m.com/)
+- リポジトリ: [Milix-M/milix-profile](https://github.com/Milix-M/milix-profile)
 
 
 ## 構成

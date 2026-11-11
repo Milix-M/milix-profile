@@ -1,0 +1,53 @@
+---
+import { FaAws, FaJava } from "react-icons/fa";
+import { SiSnowflake } from "react-icons/si";
+
+const certifications = [
+    {
+        name: "Snowflake SnowPro Core Certification",
+        acquired: "2026年10月取得",
+        Icon: SiSnowflake,
+        iconClass: "bg-sky-50 text-sky-600",
+    },
+    {
+        name: "AWS Certified Cloud Practitioner",
+        acquired: "2025年4月取得",
+        Icon: FaAws,
+        iconClass: "bg-violet-50 text-violet-700",
+    },
+    {
+        name: "Oracle Certified Java Programmer, Gold SE 11",
+        acquired: "2024年8月取得",
+        Icon: FaJava,
+        iconClass: "bg-amber-50 text-amber-700",
+    },
+    {
+        name: "Oracle Certified Java Programmer, Silver SE 11",
+        acquired: "2024年5月取得",
+        Icon: FaJava,
+        iconClass: "bg-slate-100 text-slate-600",
+    },
+];
+---
+
+<ul role="list" class="text-gray-700 space-y-4">
+    {
+        certifications.map(({ name, acquired, Icon, iconClass }) => (
+            <li class="flex items-center gap-4">
+                <span
+                    aria-hidden="true"
+                    class:list={[
+                        "flex size-12 shrink-0 items-center justify-center rounded-xl",
+                        iconClass,
+                    ]}
+                >
+                    <Icon size={28} />
+                </span>
+                <span class="min-w-0 leading-relaxed">
+                    {name}{" "}
+                    <span class="inline-block">({acquired})</span>
+                </span>
+            </li>
+        ))
+    }
+</ul>
