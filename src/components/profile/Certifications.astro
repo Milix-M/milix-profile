@@ -11,8 +11,6 @@ import oracleJavaSilver from "../../assets/certifications/oracle-java-silver-se1
 
 interface Certification {
     name: string;
-    issuer: string;
-    title: string;
     acquired: string;
     acquiredDate: string;
     url: string;
@@ -23,9 +21,7 @@ interface Certification {
 
 const certifications: Certification[] = [
     {
-        name: "Snowflake SnowPro Core Certification",
-        issuer: "Snowflake",
-        title: "SnowPro Core",
+        name: "SnowPro® Core Certification",
         acquired: "2026年10月取得",
         acquiredDate: "2026-10",
         url: "https://learn.snowflake.com/en/certifications/snowpro-core-c03/",
@@ -35,8 +31,6 @@ const certifications: Certification[] = [
     },
     {
         name: "AWS Certified Cloud Practitioner",
-        issuer: "AWS Certified",
-        title: "Cloud Practitioner",
         acquired: "2025年4月取得",
         acquiredDate: "2025-04",
         url: "https://aws.amazon.com/certification/certified-cloud-practitioner/",
@@ -46,8 +40,6 @@ const certifications: Certification[] = [
     },
     {
         name: "Oracle Certified Java Programmer, Gold SE 11",
-        issuer: "Oracle Certified",
-        title: "Java Gold SE 11",
         acquired: "2024年8月取得",
         acquiredDate: "2024-08",
         url: "https://www.credly.com/org/oracle/badge/oracle-certified-java-programmer-gold-se-11-oracle-certified-professional-java-se-11-programmer-jpn",
@@ -57,8 +49,6 @@ const certifications: Certification[] = [
     },
     {
         name: "Oracle Certified Java Programmer, Silver SE 11",
-        issuer: "Oracle Certified",
-        title: "Java Silver SE 11",
         acquired: "2024年5月取得",
         acquiredDate: "2024-05",
         url: "https://www.credly.com/org/oracle/badge/oracle-certified-java-programmer-silver-se-11-jpn",
@@ -71,7 +61,7 @@ const certifications: Certification[] = [
 
 <ul role="list" class="divide-y divide-gray-200">
     {
-        certifications.map(({ name, issuer, title, acquired, acquiredDate, url, badge, Icon, iconClass }) => (
+        certifications.map(({ name, acquired, acquiredDate, url, badge, Icon, iconClass }) => (
             <li class="certification-item grid grid-cols-[4rem_minmax(0,1fr)] items-center gap-x-4 py-5 first:pt-0 last:pb-0 sm:grid-cols-[5rem_minmax(0,1fr)_auto] sm:gap-x-6">
                 <span
                     aria-hidden="true"
@@ -94,17 +84,15 @@ const certifications: Certification[] = [
                     )}
                 </span>
                 <div class="min-w-0">
-                    <p class="text-sm text-gray-600">{issuer}</p>
                     <h3>
                         <a
                             href={url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            aria-label={`${issuer} ${title}の公式ページを開く（新しいタブ）`}
-                            title={name}
+                            aria-label={`${name}の公式ページを開く（新しいタブ）`}
                             class="certification-link inline-flex min-h-11 items-center gap-2 text-base font-semibold text-gray-800 underline decoration-gray-400 underline-offset-4 transition-colors hover:text-blue-600 hover:decoration-blue-600 focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gray-600 sm:text-lg"
                         >
-                            {title}
+                            <span>{name}</span>
                             <svg
                                 aria-hidden="true"
                                 viewBox="0 0 24 24"
