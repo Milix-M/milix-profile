@@ -62,11 +62,11 @@ const certifications: Certification[] = [
 <ul role="list" class="divide-y divide-gray-200">
     {
         certifications.map(({ name, acquired, acquiredDate, url, badge, Icon, iconClass }) => (
-            <li class="certification-item grid grid-cols-[4rem_minmax(0,1fr)] items-center gap-x-4 py-5 first:pt-0 last:pb-0 sm:grid-cols-[5rem_minmax(0,1fr)_auto] sm:gap-x-6">
+            <li class="certification-item grid grid-cols-[3rem_minmax(0,1fr)] items-center gap-x-3 py-5 first:pt-0 last:pb-0 sm:grid-cols-[4rem_minmax(0,1fr)_auto] sm:gap-x-4">
                 <span
                     aria-hidden="true"
                     class:list={[
-                        "row-span-2 flex size-16 items-center justify-center sm:row-span-1 sm:size-20",
+                        "row-span-2 flex size-12 items-center justify-center sm:row-span-1 sm:size-16",
                         !badge && ["rounded-xl", iconClass],
                     ]}
                 >
