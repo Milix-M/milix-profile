@@ -13,6 +13,7 @@ import Middleware from "./profile/techStack/Middleware.astro";
 import Other from "./profile/techStack/Other.astro";
 import LastArticles from "./articles/LastArticles.astro";
 import Careers from "./careers/Careers.astro";
+import Certifications from "./profile/Certifications.astro";
 
 const myName = "Milix-M";
 const myRole = "AIエンジニア";
@@ -101,21 +102,7 @@ const myRole = "AIエンジニア";
             <h2 class="text-2xl font-bold border-b-2 border-gray-300 pb-2 mb-6">
                 Certifications
             </h2>
-            <ul class="list-disc list-inside text-gray-700 space-y-2">
-                <li>
-                    Snowflake SnowPro Core Certification (2026年10月取得)
-                </li>
-                <li>
-                    AWS Certified Cloud Practitioner (2025年4月取得)
-                </li>
-                <li>
-                    Oracle Certified Java Programmer, Gold SE 11 (2024年8月取得)
-                </li>
-                <li>
-                    Oracle Certified Java Programmer, Silver SE 11
-                    (2024年5月取得)
-                </li>
-            </ul>
+            <Certifications />
         </section>
 
         <!-- ===== Worksセクション ===== -->
