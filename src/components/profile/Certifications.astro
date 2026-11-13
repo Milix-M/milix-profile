@@ -13,6 +13,7 @@ interface Certification {
     name: string;
     acquired: string;
     acquiredDate: string;
+    url: string;
     badge?: ImageMetadata;
     Icon: IconType;
     iconClass: string;
@@ -23,6 +24,7 @@ const certifications: Certification[] = [
         name: "SnowPro® Core Certification",
         acquired: "2026年10月取得",
         acquiredDate: "2026-10",
+        url: "https://learn.snowflake.com/en/certifications/snowpro-core-c03/",
         badge: snowproCore,
         Icon: SiSnowflake,
         iconClass: "bg-sky-50 text-sky-600",
@@ -31,6 +33,7 @@ const certifications: Certification[] = [
         name: "AWS Certified Cloud Practitioner",
         acquired: "2025年4月取得",
         acquiredDate: "2025-04",
+        url: "https://aws.amazon.com/certification/certified-cloud-practitioner/",
         badge: awsCloudPractitioner,
         Icon: FaAws,
         iconClass: "bg-violet-50 text-violet-700",
@@ -39,6 +42,7 @@ const certifications: Certification[] = [
         name: "Oracle Certified Java Programmer, Gold SE 11",
         acquired: "2024年8月取得",
         acquiredDate: "2024-08",
+        url: "https://www.credly.com/org/oracle/badge/oracle-certified-java-programmer-gold-se-11-oracle-certified-professional-java-se-11-programmer-jpn",
         badge: oracleJavaGold,
         Icon: FaJava,
         iconClass: "bg-amber-50 text-amber-700",
@@ -47,6 +51,7 @@ const certifications: Certification[] = [
         name: "Oracle Certified Java Programmer, Silver SE 11",
         acquired: "2024年5月取得",
         acquiredDate: "2024-05",
+        url: "https://www.credly.com/org/oracle/badge/oracle-certified-java-programmer-silver-se-11-jpn",
         badge: oracleJavaSilver,
         Icon: FaJava,
         iconClass: "bg-slate-100 text-slate-600",
@@ -56,7 +61,7 @@ const certifications: Certification[] = [
 
 <ul role="list" class="divide-y divide-gray-200">
     {
-        certifications.map(({ name, acquired, acquiredDate, badge, Icon, iconClass }) => (
+        certifications.map(({ name, acquired, acquiredDate, url, badge, Icon, iconClass }) => (
             <li class="certification-item grid grid-cols-[3rem_minmax(0,1fr)] items-center gap-x-3 py-5 first:pt-0 last:pb-0 sm:grid-cols-[4rem_minmax(0,1fr)_auto] sm:gap-x-4">
                 <span
                     aria-hidden="true"
@@ -78,7 +83,31 @@ const certifications: Certification[] = [
                         <Icon size={28} />
                     )}
                 </span>
-                <h3 class="min-w-0 text-base font-medium text-gray-800">{name}</h3>
+                <div class="min-w-0">
+                    <h3>
+                        <a
+                            href={url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`${name}の公式ページを開く（新しいタブ）`}
+                            class="certification-link inline-flex min-h-11 items-center gap-2 text-base font-medium text-gray-800 underline decoration-gray-400 underline-offset-4 transition-colors hover:text-blue-600 hover:decoration-blue-600 focus-visible:rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gray-600"
+                        >
+                            <span>{name}</span>
+                            <svg
+                                aria-hidden="true"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.75"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                class="size-4 shrink-0"
+                            >
+                                <path d="M7 17 17 7M7 7h10v10" />
+                            </svg>
+                        </a>
+                    </h3>
+                </div>
                 <time datetime={acquiredDate} class="col-start-2 block whitespace-nowrap text-sm tabular-nums text-gray-600 sm:col-start-auto">{acquired}</time>
             </li>
         ))
